@@ -35,7 +35,7 @@ function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return instance.get('/jobs?include=locations,user').then(function (_ref2) {
+            return instance.get('/jobs?filter[status]=all&include=locations,user').then(function (_ref2) {
               var data = _ref2.data;
               return data;
             })["catch"](function (error) {

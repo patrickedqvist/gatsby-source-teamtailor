@@ -13,7 +13,7 @@ export const createInstance = (headers = {}) => {
 
 export const fetchJobs = async () => {
   return await instance
-    .get('/jobs?include=locations,user')
+    .get('/jobs?filter[status]=all&include=locations,user')
     .then(({ data }) => data)
     .catch(error => { throw error });
 };
