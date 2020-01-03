@@ -30,44 +30,50 @@ When Teamtailor make backwards-incompatible changes to the API, they release new
 
 ## How to query
 
-There are currently only one node type available from Teamtailor: Jobs.
+There are currently only two node type available from Teamtailor: Jobs, Users.
 
 Documentation for the full set of fields made available for each resource type can be
 found in the [API docs](https://docs.teamtailor.com/).
 
-**Example Post Query**
+*Only published jobs are currently being collected.*
+
+**Example Jobs Query**
 
 ```
 {
-  allGhostPost(sort: { order: DESC, fields: [published_at] }) {
+  allTeamTailorJob {
     edges {
       node {
         id
-        slug
-        title
-        html
-        published_at
-        ...
-        tags {
-          id
-          slug
-          ...
-        }
-        primary_tag {
-          id
-          slug
-          ...
-        }
-        authors {
-          id
-          slug
-          ...
+        attributes {
+            tags
         }
       }
     }
   }
 }
 ```
+
+**Example Users Query**
+
+```
+{
+  allTeamTailorUser {
+    edges {
+      node {
+        id
+        attributes {
+          title
+          email
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+
 
 # Copyright & License
 
