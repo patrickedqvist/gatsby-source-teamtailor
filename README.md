@@ -5,6 +5,7 @@ Source plugin for pulling data into [Gatsby.js](https://www.gatsbyjs.org/) from 
 ## Install
 
 `yarn add gatsby-source-teamtailor`    
+
 `npm install --save gatsby-source-teamtailor`
 
 ## How to use
