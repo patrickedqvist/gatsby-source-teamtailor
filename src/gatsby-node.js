@@ -70,12 +70,37 @@ exports.createSchemaCustomization = ({ actions }) => {
   // where tags could be an empty array
 
   const typeDefs = `
+    type Picture {
+      original: String
+      standard: String
+    }
+
+    type Attributes {
+      title: String
+      pitch: String
+      body: String      
+      picture: Picture
+      status: String!
+    }
+
+    type Links {
+      careersite_job_url: String
+      careersite_job_apply_url: String
+      careersite_job_apply_iframe_url: String
+      self: String
+    }
+
     type TeamTailorJob implements Node {      
+      id: ID!
+      teamTailorId: ID!
+      slug: String
+      links: Links
+      attributes: Attributes
       recruiter: TeamTailorUser @link(by: "id", from: "recruiterId")      
     }
 
     type TeamTailorUser implements Node {
-      teamTailorId: String
+      teamTailorId: String    
     }
   `;
 
