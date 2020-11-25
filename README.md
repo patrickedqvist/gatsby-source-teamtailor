@@ -18,6 +18,7 @@ Plugin configuration for `gatsby-config.js`:
    options: {
        token: `abc123abc123`,
        version: `20161108`
+       status: `published`
    }
 }
 ```
@@ -28,6 +29,8 @@ The token is also the api key - authenticate your account when using the API by 
 `version`
 When Teamtailor make backwards-incompatible changes to the API, they release new, dated versions. Replace `20161108` with the version you want to use.
 
+`status`
+Filter by job status. Default is "all". Available statuses are: published, unlisted, archived, draft, scheduled and all. Depending on your permission you may not be able to use certain of these statuses. Read more about [Teamtailor Permissions](https://docs.teamtailor.com/#permissions).
 
 ## How to query
 
@@ -35,8 +38,6 @@ There are currently only two node type available from Teamtailor: Jobs, Users.
 
 Documentation for the full set of fields made available for each resource type can be
 found in the [API docs](https://docs.teamtailor.com/).
-
-*Only published jobs are currently being collected.*
 
 **Example Jobs Query**
 

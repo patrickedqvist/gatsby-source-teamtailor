@@ -5,8 +5,11 @@ import { createInstance, fetchJobs, getUsers } from './api';
 exports.sourceNodes = async ({ actions, reporter }, options) => {
   const { createNode } = actions
 
+  // Plugin Options
   const token = options.token || null;
   const version = options.version || null;
+  const jobStatus = options.status || 'all'
+
 
   if (token == null) {    
     reporter.panicOnBuild(`Invalid token for gatsby-source-teamtailor`);
@@ -25,7 +28,7 @@ exports.sourceNodes = async ({ actions, reporter }, options) => {
     });
 
     // Fetch all jobs from teamtailor
-    const getJobs = await fetchJobs();
+    const getJobs = await fetchJobs(jobStatus);
     const fetchUsers = await getUsers();
 
     const [ allJobs, allUsers ] = await Promise.all([ getJobs, fetchUsers ]);

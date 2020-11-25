@@ -11,15 +11,14 @@ export const createInstance = (headers = {}) => {
   })
 }
 
-export const fetchJobs = async () => {
+export const fetchJobs = async (status) => {
   return await instance
-    .get('/jobs?filter[status]=all&include=locations,user')
+    .get(`/jobs?filter[status]=${status}&include=locations,user`)
     .then(({ data }) => data)
     .catch(error => { throw error });
 };
 
 export const fetchUsers = async ({ url = '/users' }) => {
-  let users = []
   return await instance
     .get(url)
     .then(({ data }) => data)
